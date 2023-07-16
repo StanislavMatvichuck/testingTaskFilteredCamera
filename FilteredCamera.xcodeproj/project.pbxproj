@@ -10,7 +10,6 @@
 		08583CCA2A6405D000D8D196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08583CC92A6405D000D8D196 /* AppDelegate.swift */; };
 		08583CCC2A6405D000D8D196 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08583CCB2A6405D000D8D196 /* SceneDelegate.swift */; };
 		08583CCE2A6405D000D8D196 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08583CCD2A6405D000D8D196 /* ViewController.swift */; };
-		08583CD12A6405D000D8D196 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08583CCF2A6405D000D8D196 /* Main.storyboard */; };
 		08583CD32A6405D100D8D196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08583CD22A6405D100D8D196 /* Assets.xcassets */; };
 		08583CD62A6405D100D8D196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08583CD42A6405D100D8D196 /* LaunchScreen.storyboard */; };
 		08583CE12A6405D100D8D196 /* FilteredCameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08583CE02A6405D100D8D196 /* FilteredCameraTests.swift */; };
@@ -40,7 +39,6 @@
 		08583CC92A6405D000D8D196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08583CCB2A6405D000D8D196 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		08583CCD2A6405D000D8D196 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		08583CD02A6405D000D8D196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		08583CD22A6405D100D8D196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08583CD52A6405D100D8D196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08583CD72A6405D100D8D196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,13 +97,10 @@
 		08583CC82A6405D000D8D196 /* FilteredCamera */ = {
 			isa = PBXGroup;
 			children = (
+				08583CFC2A6409B800D8D196 /* Resources */,
 				08583CC92A6405D000D8D196 /* AppDelegate.swift */,
 				08583CCB2A6405D000D8D196 /* SceneDelegate.swift */,
 				08583CCD2A6405D000D8D196 /* ViewController.swift */,
-				08583CCF2A6405D000D8D196 /* Main.storyboard */,
-				08583CD22A6405D100D8D196 /* Assets.xcassets */,
-				08583CD42A6405D100D8D196 /* LaunchScreen.storyboard */,
-				08583CD72A6405D100D8D196 /* Info.plist */,
 			);
 			path = FilteredCamera;
 			sourceTree = "<group>";
@@ -125,6 +120,16 @@
 				08583CEC2A6405D100D8D196 /* FilteredCameraUITestsLaunchTests.swift */,
 			);
 			path = FilteredCameraUITests;
+			sourceTree = "<group>";
+		};
+		08583CFC2A6409B800D8D196 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				08583CD72A6405D100D8D196 /* Info.plist */,
+				08583CD42A6405D100D8D196 /* LaunchScreen.storyboard */,
+				08583CD22A6405D100D8D196 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +238,6 @@
 			files = (
 				08583CD62A6405D100D8D196 /* LaunchScreen.storyboard in Resources */,
 				08583CD32A6405D100D8D196 /* Assets.xcassets in Resources */,
-				08583CD12A6405D000D8D196 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +301,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		08583CCF2A6405D000D8D196 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				08583CD02A6405D000D8D196 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		08583CD42A6405D100D8D196 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -439,7 +435,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JQ483HLUHB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FilteredCamera/Info.plist;
+				INFOPLIST_FILE = FilteredCamera/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FilteredCamera;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -467,7 +464,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JQ483HLUHB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FilteredCamera/Info.plist;
+				INFOPLIST_FILE = FilteredCamera/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FilteredCamera;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
