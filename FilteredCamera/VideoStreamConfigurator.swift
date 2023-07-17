@@ -83,15 +83,26 @@ class VideoStreamConfigurator: NSObject {
 
 extension VideoStreamConfigurator: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+
+        let image = CIImage(cvImageBuffer: imageBuffer)
+        let filteredImage = filter.apply(image).cropped(to: image.extent)
+        let rotatedImage = filteredImage.transformed(by: CGAffineTransform(rotationAngle: 3 * .pi / 2))
+        let scaledImage = rotatedImage.transformToOrigin(withSize: Self.size)
+
         DispatchQueue.main.async { [weak self] in
-            guard let self, let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-
-            let image = CIImage(cvImageBuffer: imageBuffer)
-            let filteredImage = filter.apply(image).cropped(to: image.extent)
-            let rotatedImage = filteredImage.transformed(by: CGAffineTransform(rotationAngle: 3 * .pi / 2))
-            let scaledImage = rotatedImage.transformToOrigin(withSize: Self.size)
-
-            self.delegate?.readyToDisplay(image: UIImage(ciImage: scaledImage))
+            self?.delegate?.readyToDisplay(image: UIImage(ciImage: scaledImage))
         }
+    }
+}
+
+extension CIImage {
+    func transformToOrigin(withSize size: CGSize) -> CIImage {
+        let originX = extent.origin.x
+        let originY = extent.origin.y
+        let scaleX = size.width / extent.width
+        let scaleY = size.height / extent.height
+        let scale = max(scaleX, scaleY)
+        return transformed(by: CGAffineTransform(translationX: -originX, y: -originY)).transformed(by: CGAffineTransform(scaleX: scale, y: scale))
     }
 }
