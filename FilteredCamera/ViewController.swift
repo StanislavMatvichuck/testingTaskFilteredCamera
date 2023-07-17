@@ -26,8 +26,8 @@ final class ViewController: UIViewController {
 }
 
 extension ViewController: DisplayingVideoStream {
-    func readyToDisplay(session: AVCaptureSession) {
-        rootView.allowCapturing(for: session)
+    func readyToDisplay(image: CIImage) {
+        rootView.update(image: image)
     }
 
     func accessDenied() {
