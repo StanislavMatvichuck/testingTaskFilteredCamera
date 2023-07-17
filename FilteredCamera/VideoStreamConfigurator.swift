@@ -16,11 +16,19 @@ protocol DisplayingVideoStream: AnyObject {
 }
 
 class VideoStreamConfigurator: NSObject {
+    private static let size = UIScreen.main.bounds.size
+
     weak var delegate: DisplayingVideoStream?
     private let queue = DispatchQueue(label: "VideoStream", qos: .userInitiated)
     private let session = AVCaptureSession()
-    private let filter = ImageFilter()
+    private var filter: ImageFiltering
 
+    init(delegate: DisplayingVideoStream? = nil, filter: ImageFiltering) {
+        self.delegate = delegate
+        self.filter = filter
+    }
+
+    // MARK: - Public
     func startDisplaying() {
         let status = AVCaptureDevice.authorizationStatus(for: .video)
 
@@ -34,6 +42,11 @@ class VideoStreamConfigurator: NSObject {
         }
     }
 
+    func update(filter: ImageFiltering) {
+        self.filter = filter
+    }
+
+    // MARK: - Private
     private func requestCaptureAuthorization() {
         AVCaptureDevice.requestAccess(for: .video) { [weak self] accessGranted in
             guard accessGranted, let self else { return }
@@ -72,7 +85,13 @@ extension VideoStreamConfigurator: AVCaptureVideoDataOutputSampleBufferDelegate 
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         DispatchQueue.main.async { [weak self] in
             guard let self, let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-            self.delegate?.readyToDisplay(image: self.filter.apply(CIImage(cvImageBuffer: imageBuffer)))
+
+            let image = CIImage(cvImageBuffer: imageBuffer)
+            let filteredImage = filter.apply(image).cropped(to: image.extent)
+            let rotatedImage = filteredImage.transformed(by: CGAffineTransform(rotationAngle: 3 * .pi / 2))
+            let scaledImage = rotatedImage.transformToOrigin(withSize: Self.size)
+
+            self.delegate?.readyToDisplay(image: UIImage(ciImage: scaledImage))
         }
     }
 }
