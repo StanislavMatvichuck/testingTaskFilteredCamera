@@ -17,7 +17,8 @@
 		08583CED2A6405D100D8D196 /* FilteredCameraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08583CEC2A6405D100D8D196 /* FilteredCameraUITestsLaunchTests.swift */; };
 		08583D002A640AEE00D8D196 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08583CFF2A640AEE00D8D196 /* View.swift */; };
 		085CD14A2A646D5600CAA9FC /* VideoStreamConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085CD1492A646D5600CAA9FC /* VideoStreamConfigurator.swift */; };
-		087FEC072A655F3C003D4EF0 /* ImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087FEC062A655F3C003D4EF0 /* ImageFilter.swift */; };
+		087FEC092A656D00003D4EF0 /* FiltersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087FEC082A656D00003D4EF0 /* FiltersList.swift */; };
+		087FEC102A656DAD003D4EF0 /* ImageFiltering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087FEC0F2A656DAD003D4EF0 /* ImageFiltering.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +53,8 @@
 		08583CEC2A6405D100D8D196 /* FilteredCameraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredCameraUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		08583CFF2A640AEE00D8D196 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		085CD1492A646D5600CAA9FC /* VideoStreamConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoStreamConfigurator.swift; sourceTree = "<group>"; };
-		087FEC062A655F3C003D4EF0 /* ImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilter.swift; sourceTree = "<group>"; };
+		087FEC082A656D00003D4EF0 /* FiltersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersList.swift; sourceTree = "<group>"; };
+		087FEC0F2A656DAD003D4EF0 /* ImageFiltering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFiltering.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,13 +105,13 @@
 		08583CC82A6405D000D8D196 /* FilteredCamera */ = {
 			isa = PBXGroup;
 			children = (
+				087FEC0A2A656D7B003D4EF0 /* ImageFilters */,
 				08583CFC2A6409B800D8D196 /* Resources */,
 				08583CC92A6405D000D8D196 /* AppDelegate.swift */,
 				08583CCB2A6405D000D8D196 /* SceneDelegate.swift */,
 				08583CCD2A6405D000D8D196 /* ViewController.swift */,
 				08583CFF2A640AEE00D8D196 /* View.swift */,
 				085CD1492A646D5600CAA9FC /* VideoStreamConfigurator.swift */,
-				087FEC062A655F3C003D4EF0 /* ImageFilter.swift */,
 			);
 			path = FilteredCamera;
 			sourceTree = "<group>";
@@ -139,6 +141,15 @@
 				08583CD22A6405D100D8D196 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		087FEC0A2A656D7B003D4EF0 /* ImageFilters */ = {
+			isa = PBXGroup;
+			children = (
+				087FEC082A656D00003D4EF0 /* FiltersList.swift */,
+				087FEC0F2A656DAD003D4EF0 /* ImageFiltering.swift */,
+			);
+			path = ImageFilters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,9 +282,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				087FEC102A656DAD003D4EF0 /* ImageFiltering.swift in Sources */,
 				085CD14A2A646D5600CAA9FC /* VideoStreamConfigurator.swift in Sources */,
-				087FEC072A655F3C003D4EF0 /* ImageFilter.swift in Sources */,
 				08583D002A640AEE00D8D196 /* View.swift in Sources */,
+				087FEC092A656D00003D4EF0 /* FiltersList.swift in Sources */,
 				08583CCE2A6405D000D8D196 /* ViewController.swift in Sources */,
 				08583CCA2A6405D000D8D196 /* AppDelegate.swift in Sources */,
 				08583CCC2A6405D000D8D196 /* SceneDelegate.swift in Sources */,
