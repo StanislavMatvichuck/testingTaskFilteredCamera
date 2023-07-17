@@ -8,16 +8,18 @@
 import AVFoundation
 import CoreImage
 import Foundation
+import UIKit
 
 protocol DisplayingVideoStream: AnyObject {
+    func readyToDisplay(image: UIImage)
     func accessDenied()
-    func readyToDisplay(image: CIImage)
 }
 
 class VideoStreamConfigurator: NSObject {
     weak var delegate: DisplayingVideoStream?
     private let queue = DispatchQueue(label: "VideoStream", qos: .userInitiated)
     private let session = AVCaptureSession()
+    private let filter = ImageFilter()
 
     func startDisplaying() {
         let status = AVCaptureDevice.authorizationStatus(for: .video)
@@ -68,12 +70,9 @@ class VideoStreamConfigurator: NSObject {
 
 extension VideoStreamConfigurator: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-
         DispatchQueue.main.async { [weak self] in
-            let image = CIImage(cvImageBuffer: imageBuffer)
-            let rotatedImage = image.transformed(by: CGAffineTransform(rotationAngle: 3 * .pi / 2))
-            self?.delegate?.readyToDisplay(image: rotatedImage)
+            guard let self, let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+            self.delegate?.readyToDisplay(image: self.filter.apply(CIImage(cvImageBuffer: imageBuffer)))
         }
     }
 }

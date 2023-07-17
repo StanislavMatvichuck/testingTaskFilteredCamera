@@ -5,7 +5,6 @@
 //  Created by Stanislav Matvichuck on 16.07.2023.
 //
 
-import CoreImage
 import UIKit
 
 final class View: UIView {
@@ -40,12 +39,8 @@ final class View: UIView {
         accessDeniedLabel.isHidden = false
     }
 
-    func update(image: CIImage) {
-        guard let filter = CIFilter(name: "CIGaussianBlur", parameters: ["inputImage": image]) else { return }
-        filter.setDefaults()
-        let uiImage = UIImage(ciImage: filter.outputImage!.cropped(to: image.extent).transformToOrigin(withSize: bounds.size))
-        stream.image = uiImage
-
+    func update(image: UIImage) {
+        stream.image = image
         accessDeniedLabel.isHidden = true
     }
 
@@ -69,16 +64,5 @@ final class View: UIView {
 
     private func configureAppearance() {
         backgroundColor = .gray
-    }
-}
-
-extension CIImage {
-    func transformToOrigin(withSize size: CGSize) -> CIImage {
-        let originX = extent.origin.x
-        let originY = extent.origin.y
-        let scaleX = size.width / extent.width
-        let scaleY = size.height / extent.height
-        let scale = max(scaleX, scaleY)
-        return transformed(by: CGAffineTransform(translationX: -originX, y: -originY)).transformed(by: CGAffineTransform(scaleX: scale, y: scale))
     }
 }

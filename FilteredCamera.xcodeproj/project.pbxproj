@@ -17,6 +17,7 @@
 		08583CED2A6405D100D8D196 /* FilteredCameraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08583CEC2A6405D100D8D196 /* FilteredCameraUITestsLaunchTests.swift */; };
 		08583D002A640AEE00D8D196 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08583CFF2A640AEE00D8D196 /* View.swift */; };
 		085CD14A2A646D5600CAA9FC /* VideoStreamConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085CD1492A646D5600CAA9FC /* VideoStreamConfigurator.swift */; };
+		087FEC072A655F3C003D4EF0 /* ImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087FEC062A655F3C003D4EF0 /* ImageFilter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		08583CEC2A6405D100D8D196 /* FilteredCameraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredCameraUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		08583CFF2A640AEE00D8D196 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		085CD1492A646D5600CAA9FC /* VideoStreamConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoStreamConfigurator.swift; sourceTree = "<group>"; };
+		087FEC062A655F3C003D4EF0 /* ImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				08583CCD2A6405D000D8D196 /* ViewController.swift */,
 				08583CFF2A640AEE00D8D196 /* View.swift */,
 				085CD1492A646D5600CAA9FC /* VideoStreamConfigurator.swift */,
+				087FEC062A655F3C003D4EF0 /* ImageFilter.swift */,
 			);
 			path = FilteredCamera;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				085CD14A2A646D5600CAA9FC /* VideoStreamConfigurator.swift in Sources */,
+				087FEC072A655F3C003D4EF0 /* ImageFilter.swift in Sources */,
 				08583D002A640AEE00D8D196 /* View.swift in Sources */,
 				08583CCE2A6405D000D8D196 /* ViewController.swift in Sources */,
 				08583CCA2A6405D000D8D196 /* AppDelegate.swift in Sources */,

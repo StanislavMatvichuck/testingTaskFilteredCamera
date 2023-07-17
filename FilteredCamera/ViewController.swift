@@ -26,7 +26,7 @@ final class ViewController: UIViewController {
 }
 
 extension ViewController: DisplayingVideoStream {
-    func readyToDisplay(image: CIImage) {
+    func readyToDisplay(image: UIImage) {
         rootView.update(image: image)
     }
 
