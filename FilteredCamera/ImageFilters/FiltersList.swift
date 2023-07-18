@@ -12,6 +12,8 @@ struct FiltersList {
         NoneFilter(),
         GaussianBlurFilter(),
         GrayColorFilter(),
+        PixellateFilter(),
+        PngMaskFilter(),
     ]
 
     var availableFiltersNames: [String] { filters.map { $0.description } }
