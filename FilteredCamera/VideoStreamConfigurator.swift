@@ -74,7 +74,7 @@ class VideoStreamConfigurator: NSObject {
         session.beginConfiguration()
         session.addInput(videoDeviceInput)
         session.addOutput(output)
-        session.sessionPreset = .high
+        session.sessionPreset = .hd1920x1080
         session.commitConfiguration()
 
         queue.async { self.session.startRunning() }
