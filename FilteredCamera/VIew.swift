@@ -14,7 +14,7 @@ final class View: UIView {
     let accessDeniedLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .red
+        label.textColor = .white
         label.text = "Please visit settings and allow camera access to enable stream filtering"
         label.numberOfLines = 0
         label.isHidden = true
