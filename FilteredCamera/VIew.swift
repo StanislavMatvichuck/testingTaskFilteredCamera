@@ -28,14 +28,13 @@ final class View: UIView {
     }()
 
     let filters: UIStackView = {
-        let parent = UIStackView(frame: .zero)
-        parent.translatesAutoresizingMaskIntoConstraints = false
-        parent.spacing = View.buttonsSpacing
-
         let space = UIView(frame: .zero)
         space.translatesAutoresizingMaskIntoConstraints = false
         space.setContentHuggingPriority(.defaultLow, for: .horizontal)
 
+        let parent = UIStackView(frame: .zero)
+        parent.translatesAutoresizingMaskIntoConstraints = false
+        parent.spacing = View.buttonsSpacing
         parent.addArrangedSubview(space)
 
         return parent
@@ -70,9 +69,13 @@ final class View: UIView {
 
     // MARK: - Private
     private func configureLayout() {
+        let filtersScroll = UIScrollView(frame: .zero)
+        filtersScroll.translatesAutoresizingMaskIntoConstraints = false
+        filtersScroll.addSubview(filters)
+
         addSubview(accessDeniedLabel)
         addSubview(stream)
-        addSubview(filters)
+        addSubview(filtersScroll)
 
         NSLayoutConstraint.activate([
             accessDeniedLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -84,9 +87,16 @@ final class View: UIView {
             stream.widthAnchor.constraint(equalTo: widthAnchor),
             stream.heightAnchor.constraint(equalTo: heightAnchor),
 
-            filters.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
-            filters.centerXAnchor.constraint(equalTo: centerXAnchor),
-            filters.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            filtersScroll.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
+            filtersScroll.heightAnchor.constraint(equalTo: filters.heightAnchor),
+            filtersScroll.centerXAnchor.constraint(equalTo: centerXAnchor),
+            filtersScroll.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+
+            filters.leadingAnchor.constraint(equalTo: filtersScroll.contentLayoutGuide.leadingAnchor),
+            filters.trailingAnchor.constraint(equalTo: filtersScroll.contentLayoutGuide.trailingAnchor),
+            filters.topAnchor.constraint(equalTo: filtersScroll.contentLayoutGuide.topAnchor),
+            filters.bottomAnchor.constraint(equalTo: filtersScroll.contentLayoutGuide.bottomAnchor),
+            filters.heightAnchor.constraint(equalTo: filtersScroll.frameLayoutGuide.heightAnchor),
         ])
 
         stream.contentMode = .scaleAspectFill
