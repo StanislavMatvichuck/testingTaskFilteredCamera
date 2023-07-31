@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class View: UIView {
+final class View: UIView, ContourDetectingDelegate {
     private static let buttonSize = 64.0
     private static let buttonsSpacing = 10.0
 
@@ -40,6 +40,18 @@ final class View: UIView {
         return parent
     }()
 
+    let count: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.text = "0"
+        label.numberOfLines = 0
+        label.isHidden = true
+        return label
+    }()
+
+    private var shapeLayer: CAShapeLayer?
+
     init(buttons: [String], selectedButtonIndex: Int) {
         super.init(frame: .zero)
         configure(buttons: buttons, selectedButtonIndex)
@@ -63,8 +75,25 @@ final class View: UIView {
 
     func update(selectedFilterIndex: Int) {
         removeSelectionFromAllFilters()
-
+        shapeLayer?.removeFromSuperlayer()
+        shapeLayer = nil
+        count.isHidden = false
         filters.arrangedSubviews[selectedFilterIndex].backgroundColor = .green
+    }
+
+    /// ContourDetectingDelegate method
+    /// - Parameters:
+    ///   - path: path to de drawn
+    ///   - count: count of displayed paths
+    func display(path: CGPath, count: Int) {
+        if shapeLayer == nil {
+            shapeLayer = makeShapeLayer(cgPath: path)
+        } else {
+            shapeLayer?.path = transformNormalizedPathToScreenCoordinates(normalizedPath: path, viewBounds: bounds)
+            layer.setNeedsDisplay()
+        }
+
+        self.count.text = "\(count)"
     }
 
     // MARK: - Private
@@ -76,6 +105,7 @@ final class View: UIView {
         addSubview(accessDeniedLabel)
         addSubview(stream)
         addSubview(filtersScroll)
+        addSubview(count)
 
         NSLayoutConstraint.activate([
             accessDeniedLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -86,6 +116,9 @@ final class View: UIView {
             stream.centerYAnchor.constraint(equalTo: centerYAnchor),
             stream.widthAnchor.constraint(equalTo: widthAnchor),
             stream.heightAnchor.constraint(equalTo: heightAnchor),
+
+            count.centerXAnchor.constraint(equalTo: centerXAnchor),
+            count.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             filtersScroll.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             filtersScroll.heightAnchor.constraint(equalTo: filters.heightAnchor),
@@ -98,8 +131,6 @@ final class View: UIView {
             filters.bottomAnchor.constraint(equalTo: filtersScroll.contentLayoutGuide.bottomAnchor),
             filters.heightAnchor.constraint(equalTo: filtersScroll.frameLayoutGuide.heightAnchor),
         ])
-
-        stream.contentMode = .scaleAspectFill
     }
 
     private func configureAppearance() {
@@ -135,6 +166,43 @@ final class View: UIView {
     private func removeSelectionFromAllFilters() {
         for view in filters.arrangedSubviews where view is UIButton {
             view.backgroundColor = .white
+        }
+    }
+
+    private func makeShapeLayer(cgPath: CGPath) -> CAShapeLayer {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.frame = bounds
+        shapeLayer.lineWidth = 2.0
+        shapeLayer.fillColor = nil
+        shapeLayer.strokeColor = UIColor.green.cgColor
+        shapeLayer.path = transformNormalizedPathToScreenCoordinates(normalizedPath: cgPath, viewBounds: bounds)
+        layer.addSublayer(shapeLayer)
+        return shapeLayer
+    }
+
+    private func transformNormalizedPathToScreenCoordinates(normalizedPath: CGPath, viewBounds: CGRect) -> CGPath {
+        let boundingBox = normalizedPath.boundingBox
+
+        print("boundingBox.width \(boundingBox.width)")
+        print("boundingBox.height \(boundingBox.height)")
+
+        print("viewBounds.width \(viewBounds.width)")
+        print("viewBounds.height \(viewBounds.height)")
+
+        let scaleX = viewBounds.width / boundingBox.width
+        let scaleY = viewBounds.height / boundingBox.height
+
+        let translateX = (viewBounds.width - boundingBox.width * scaleX) / 2.0
+        let translateY = (viewBounds.height - boundingBox.height * scaleY) / 2.0
+
+        var transform = CGAffineTransform.identity
+        transform = transform.scaledBy(x: scaleX, y: scaleY)
+        transform = transform.translatedBy(x: translateX, y: translateY)
+
+        if let transformedPath = normalizedPath.copy(using: &transform) {
+            return transformedPath
+        } else {
+            return normalizedPath
         }
     }
 }

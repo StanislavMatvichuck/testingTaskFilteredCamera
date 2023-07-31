@@ -10,20 +10,22 @@ import CoreImage
 import Foundation
 import UIKit
 
-protocol DisplayingVideoStream: AnyObject {
+protocol DisplayingVideoStream {
     func readyToDisplay(image: UIImage)
     func accessDenied()
 }
 
 class VideoStreamConfigurator: NSObject {
+    typealias Delegate = (AnyObject & DisplayingVideoStream)?
+
     private static let size = UIScreen.main.bounds.size
 
-    weak var delegate: DisplayingVideoStream?
+    weak var delegate: Delegate
     private let queue = DispatchQueue(label: "VideoStream", qos: .userInitiated)
     private let session = AVCaptureSession()
     private var filter: ImageFiltering
 
-    init(delegate: DisplayingVideoStream? = nil, filter: ImageFiltering) {
+    init(delegate: Delegate = nil, filter: ImageFiltering) {
         self.delegate = delegate
         self.filter = filter
     }

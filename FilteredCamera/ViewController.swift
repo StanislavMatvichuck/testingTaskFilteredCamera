@@ -14,12 +14,23 @@ final class ViewController: UIViewController {
     let filtersList: FiltersList
 
     init() {
-        let filtersList = FiltersList()
+        let contourDetectingFilter = ContourDetectingFilter()
+
+        let filtersList = FiltersList([
+            NoneFilter(),
+            GaussianBlurFilter(),
+            GrayColorFilter(),
+            PixellateFilter(),
+            PngMaskFilter(),
+            contourDetectingFilter
+        ])
+
         let configurator = VideoStreamConfigurator(filter: filtersList.activeFilter)
         let view = View(
             buttons: filtersList.availableFiltersNames,
             selectedButtonIndex: filtersList.selectedFilterIndex
         )
+        contourDetectingFilter.delegate = view
 
         self.streamConfigurator = configurator
         self.rootView = view

@@ -8,18 +8,16 @@
 import Foundation
 
 struct FiltersList {
-    private let filters: [ImageFiltering] = [
-        NoneFilter(),
-        GaussianBlurFilter(),
-        GrayColorFilter(),
-        PixellateFilter(),
-        PngMaskFilter(),
-    ]
+    private let filters: [ImageFiltering]
 
     var availableFiltersNames: [String] { filters.map { $0.description } }
 
     var selectedFilterIndex: Int { 0 }
     var activeFilter: ImageFiltering { filters[selectedFilterIndex] }
+
+    init(_ filters: [ImageFiltering]) {
+        self.filters = filters
+    }
 
     func index(forFilterName: String) -> Int? {
         for (index, filter) in filters.enumerated() {

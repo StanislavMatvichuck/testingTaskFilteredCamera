@@ -19,6 +19,7 @@
 		085CD14A2A646D5600CAA9FC /* VideoStreamConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085CD1492A646D5600CAA9FC /* VideoStreamConfigurator.swift */; };
 		087FEC092A656D00003D4EF0 /* FiltersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087FEC082A656D00003D4EF0 /* FiltersList.swift */; };
 		087FEC102A656DAD003D4EF0 /* ImageFiltering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087FEC0F2A656DAD003D4EF0 /* ImageFiltering.swift */; };
+		089902D02A6A8F53009F94B5 /* ContourDetectingFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089902CF2A6A8F53009F94B5 /* ContourDetectingFilter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		085CD1492A646D5600CAA9FC /* VideoStreamConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoStreamConfigurator.swift; sourceTree = "<group>"; };
 		087FEC082A656D00003D4EF0 /* FiltersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersList.swift; sourceTree = "<group>"; };
 		087FEC0F2A656DAD003D4EF0 /* ImageFiltering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFiltering.swift; sourceTree = "<group>"; };
+		089902CF2A6A8F53009F94B5 /* ContourDetectingFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContourDetectingFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				087FEC082A656D00003D4EF0 /* FiltersList.swift */,
 				087FEC0F2A656DAD003D4EF0 /* ImageFiltering.swift */,
+				089902CF2A6A8F53009F94B5 /* ContourDetectingFilter.swift */,
 			);
 			path = ImageFilters;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				087FEC092A656D00003D4EF0 /* FiltersList.swift in Sources */,
 				08583CCE2A6405D000D8D196 /* ViewController.swift in Sources */,
 				08583CCA2A6405D000D8D196 /* AppDelegate.swift in Sources */,
+				089902D02A6A8F53009F94B5 /* ContourDetectingFilter.swift in Sources */,
 				08583CCC2A6405D000D8D196 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
