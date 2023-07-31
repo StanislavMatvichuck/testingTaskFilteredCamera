@@ -1,0 +1,55 @@
+<mxfile host="Electron" modified="2023-07-31T09:58:47.477Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="K8u_NknSl7cI3goWYRbA" version="21.6.1" type="device">
+  <diagram name="Page-1" id="HGswavUPntUuQtO1YSX6">
+    <mxGraphModel dx="165" dy="35" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UNu1Ue5hiMfmYJR6YjCb-1" target="UNu1Ue5hiMfmYJR6YjCb-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="UNu1Ue5hiMfmYJR6YjCb-1" target="UNu1Ue5hiMfmYJR6YjCb-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UNu1Ue5hiMfmYJR6YjCb-1" target="UNu1Ue5hiMfmYJR6YjCb-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="UNu1Ue5hiMfmYJR6YjCb-1" target="UNu1Ue5hiMfmYJR6YjCb-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-1" value="ViewController" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="567" width="92" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="UNu1Ue5hiMfmYJR6YjCb-2" target="UNu1Ue5hiMfmYJR6YjCb-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-2" value="View" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="888.5" y="570" width="50" height="19" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UNu1Ue5hiMfmYJR6YjCb-4" target="UNu1Ue5hiMfmYJR6YjCb-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-4" value="VideoStreamConfigurator" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="669.5" y="520" width="153" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UNu1Ue5hiMfmYJR6YjCb-6" target="UNu1Ue5hiMfmYJR6YjCb-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-6" value="FiltersList" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="706" y="610" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UNu1Ue5hiMfmYJR6YjCb-8" target="UNu1Ue5hiMfmYJR6YjCb-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-8" value="ContourDetectingFilter" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="677" y="654" width="138" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-11" value="ContourDetectingDelegate" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="837" y="655" width="153" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="UNu1Ue5hiMfmYJR6YjCb-23" value="DisplayingVideoStream" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="498" y="521.5" width="153" height="28" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
